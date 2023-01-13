@@ -1,6 +1,5 @@
-import task1.PhoneReader;
-import task1.PhoneValidator;
-import task2.UserBuilder;
+import task1.*;
+import task2.*;
 
 import java.io.FileNotFoundException;
 
@@ -8,8 +7,16 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         final String basePath = "src/main/resources";
 
-        new PhoneReader().setPath(basePath + "/task-1/file.txt").run(new PhoneValidator());
+        new PhoneReader()
+                .setPath(basePath + "/task-1/file.txt")
+                .run(new PhoneValidator());
 
-        new UserBuilder().setFilePath(basePath + "/task-2/file.txt").setJsonPath(basePath + "/task-2/user.json").run();
+        var users = new UserBuilder()
+                .setPath(basePath + "/task-2/file.txt")
+                .build();
+
+        new JsonWriter()
+                .setPath(basePath + "/task-2/user.json")
+                .writeToFile(users);
     }
 }

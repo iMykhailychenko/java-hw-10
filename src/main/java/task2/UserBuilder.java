@@ -1,35 +1,25 @@
 package task2;
 
-import com.google.gson.*;
 import utils.FileUtils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UserBuilder {
-    private String filePath;
-    private String jsonPath;
+    private String path;
     private String[] head;
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public UserBuilder setFilePath(String filePath) {
-        this.filePath = filePath;
+    public UserBuilder setPath(String path) {
+        this.path = path;
         return this;
     }
 
-    public UserBuilder setJsonPath(String jsonPath) {
-        this.jsonPath = jsonPath;
-        return this;
-    }
-
-    public void run() throws FileNotFoundException {
-        File file = FileUtils.getFile(filePath);
+    public ArrayList<Map<String, String>> build() throws FileNotFoundException {
+        File file = FileUtils.getFile(path);
+        ArrayList<Map<String, String>> users = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             head = reader.readLine().split(" ");
-            ArrayList<Map<String, String>> users = new ArrayList<>();
 
             String line = reader.readLine();
             while (line != null) {
@@ -44,19 +34,12 @@ public class UserBuilder {
                 line = reader.readLine();
             }
 
-            writeJson(gson.toJson(users));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+
+        return users;
     }
 
-    private void writeJson(String json) {
-        File file = FileUtils.createAndGetFile(jsonPath);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(json, 0, json.length());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 }

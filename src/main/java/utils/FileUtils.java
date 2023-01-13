@@ -1,6 +1,5 @@
 package utils;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -8,8 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FileUtils {
-    @Contract("null -> fail")
-    public static @NotNull File getFile(String path) throws FileNotFoundException {
+    public static File getFile(@NotNull String path) throws FileNotFoundException {
         File file = new File(path);
 
         if (!file.exists()) {
@@ -19,8 +17,7 @@ public class FileUtils {
         return file;
     }
 
-    @Contract("null -> fail")
-    public static @NotNull File createAndGetFile(String path) {
+    public static File createAndGetFile(@NotNull String path) {
         File file = new File(path);
 
         try {
@@ -33,4 +30,6 @@ public class FileUtils {
 
         return file;
     }
+
+
 }
