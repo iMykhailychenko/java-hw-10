@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 
 public class UserBuilder {
-    private String path;
+    private final String path;
     private String[] head;
 
     public UserBuilder(String path) {

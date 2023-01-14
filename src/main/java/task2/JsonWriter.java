@@ -8,8 +8,8 @@ import utils.FileUtils;
 import java.io.*;
 
 public class JsonWriter implements JsonFileWriter {
-    private String path;
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final String path;
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public JsonWriter(String path) {
         this.path = path;

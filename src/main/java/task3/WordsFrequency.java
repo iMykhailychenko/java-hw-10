@@ -6,26 +6,35 @@ import java.io.*;
 import java.util.*;
 
 public class WordsFrequency {
-    private String path;
+    private final String path;
 
-    public WordsFrequency setPath(String path) {
+    public WordsFrequency(String path) {
         this.path = path;
-        return this;
     }
 
-    public void count() throws FileNotFoundException {
+    public Map<String, Integer> count() throws FileNotFoundException {
         File file = FileUtils.getFile(path);
-        Map<String, Integer> map = new TreeMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
         try (BufferedReader buffer = new BufferedReader(new FileReader(file))) {
             String line = buffer.readLine();
             while (line != null) {
-                String[] list = line.split(" ");
+                String[] words = line.replaceAll(" +", " ").split(" ");
 
+                for (String word : words) {
+                    if (map.containsKey(word)) {
+                        map.put(word, map.get(word) + 1);
+                        continue;
+                    }
+
+                    map.put(word, 1);
+                }
                 line = buffer.readLine();
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+
+        return map;
     }
 }

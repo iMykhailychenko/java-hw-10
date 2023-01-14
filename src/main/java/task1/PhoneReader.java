@@ -5,7 +5,7 @@ import utils.FileUtils;
 import java.io.*;
 
 public class PhoneReader {
-    private String path;
+    private final String path;
 
     public PhoneReader(String path) {
         this.path = path;

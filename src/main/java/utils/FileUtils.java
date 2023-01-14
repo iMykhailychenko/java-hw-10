@@ -23,9 +23,8 @@ public class FileUtils {
         File file = new File(path);
 
         try {
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
-            }
+            String message = file.createNewFile() ? "File " + file.getName() + " created" : "File " + file.getName() + " updated";
+            System.out.println(message);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
