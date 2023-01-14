@@ -9,9 +9,8 @@ public class UserBuilder {
     private String path;
     private String[] head;
 
-    public UserBuilder setPath(String path) {
+    public UserBuilder(String path) {
         this.path = path;
-        return this;
     }
 
     public ArrayList<Map<String, String>> build() throws FileNotFoundException {

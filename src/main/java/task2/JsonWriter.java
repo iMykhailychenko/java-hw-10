@@ -11,9 +11,8 @@ public class JsonWriter implements JsonFileWriter {
     private String path;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public JsonWriter setPath(String path) {
+    public JsonWriter(String path) {
         this.path = path;
-        return this;
     }
 
     @Override

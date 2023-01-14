@@ -7,9 +7,8 @@ import java.io.*;
 public class PhoneReader {
     private String path;
 
-    public PhoneReader setPath(String path) {
+    public PhoneReader(String path) {
         this.path = path;
-        return this;
     }
 
     public void run(Validator validator) throws FileNotFoundException {

@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FileUtils {
+    private static final String basePath = "src/main/resources";
+
     public static File getFile(@NotNull String path) throws FileNotFoundException {
         File file = new File(path);
 
@@ -31,5 +33,7 @@ public class FileUtils {
         return file;
     }
 
-
+    public static String getFullPath(String sub) {
+        return basePath + sub;
+    }
 }
