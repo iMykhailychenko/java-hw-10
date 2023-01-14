@@ -1,8 +1,6 @@
 package task2;
 
 import com.google.gson.*;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import utils.FileUtils;
 
 import java.io.*;
@@ -16,7 +14,7 @@ public class JsonWriter implements JsonFileWriter {
     }
 
     @Override
-    public void writeToFile(@NotNull Object obj) {
+    public void writeToFile(Object obj) {
         String json = JsonWriter.gson.toJson(obj);
         File file = FileUtils.createAndGetFile(path);
 

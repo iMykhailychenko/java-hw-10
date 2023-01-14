@@ -1,7 +1,5 @@
 package utils;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,7 +7,7 @@ import java.io.IOException;
 public class FileUtils {
     private static final String basePath = "src/main/resources";
 
-    public static File getFile(@NotNull String path) throws FileNotFoundException {
+    public static File getFile(String path) throws FileNotFoundException {
         File file = new File(path);
 
         if (!file.exists()) {
@@ -19,7 +17,7 @@ public class FileUtils {
         return file;
     }
 
-    public static File createAndGetFile(@NotNull String path) {
+    public static File createAndGetFile(String path) {
         File file = new File(path);
 
         try {
