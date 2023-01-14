@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FileUtils {
+    private FileUtils() {
+    }
+
     public static File getFile(String path) throws FileNotFoundException {
         File file = new File(path);
 

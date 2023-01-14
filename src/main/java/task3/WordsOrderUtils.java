@@ -3,6 +3,9 @@ package task3;
 import java.util.*;
 
 public class WordsOrderUtils {
+    private WordsOrderUtils() {
+    }
+
     public static Map<String, Integer> sort(final Map<String, Integer> map) {
         Map<String, Integer> newMap = new TreeMap<>(new Comparator<String>() {
             @Override

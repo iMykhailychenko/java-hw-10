@@ -3,21 +3,21 @@ import task2.*;
 import task3.*;
 
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        new PhoneReader("assets/file1.txt")
-                .read(new PhoneValidator());
+        String path1 = Paths.get("assets", "file1.txt").toString();
+        new PhoneReader(path1).read(new PhoneValidator());
 
-        var users = new UserBuilder("assets/file2.txt")
-                .build();
+        String path2 = Paths.get("assets", "file2.txt").toString();
+        var users = new UserBuilder(path2).build();
 
-        new JsonWriter("assets/user.json")
-                .writeToFile(users);
+        String jsonPath = Paths.get("assets", "user.json").toString();
+        new JsonWriter(jsonPath).writeToFile(users);
 
-        var words = WordsOrderUtils.sort(
-                new WordsFrequency("assets/words.txt").count()
-        );
+        String path3 = Paths.get("assets", "words.txt").toString();
+        var words = WordsOrderUtils.sort(new WordsFrequency(path3).count());
 
         System.out.println(words);
     }
