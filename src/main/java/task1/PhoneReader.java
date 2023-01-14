@@ -11,7 +11,7 @@ public class PhoneReader {
         this.path = path;
     }
 
-    public void run(Validator validator) throws FileNotFoundException {
+    public void read(Validator validator) throws FileNotFoundException {
         File file = FileUtils.getFile(path);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
