@@ -9,7 +9,7 @@ import java.io.*;
 
 public class JsonWriter implements JsonFileWriter {
     private final String path;
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public JsonWriter(String path) {
         this.path = path;
@@ -17,7 +17,7 @@ public class JsonWriter implements JsonFileWriter {
 
     @Override
     public void writeToFile(@NotNull Object obj) {
-        String json = gson.toJson(obj);
+        String json = JsonWriter.gson.toJson(obj);
         File file = FileUtils.createAndGetFile(path);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
